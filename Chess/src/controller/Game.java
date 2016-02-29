@@ -50,10 +50,9 @@ public class Game {
 	
 	public void game() {
 		while (!gamended){
-			parseInput();
+			System.out.println(parseInput());
 			player1.turn = !player1.turn;
 			player2.turn = !player2.turn;
-			
 		}
 	}
 }
