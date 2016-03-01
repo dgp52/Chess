@@ -4,13 +4,11 @@ import model.Piece;
 import model.Player;
 
 public class Board {
-	public static Piece[][] ps = new Piece[8][8]; 
+	public  Piece[][] ps = new Piece[8][8]; 
 	int counter = 8;
-	public Board(Player p1, Player p2) {
-		p1.addPieces();
-		p2.addPieces();
+//	public Board(Player p1, Player p2) {
 		
-	}
+	//}
 	
 	public void update() {
 		for(int i = 0; i< ps.length; i++){

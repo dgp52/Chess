@@ -3,7 +3,7 @@ package pieces;
 import java.awt.Point;
 
 import model.AbstractPiece;
-import model.Piece;
+import view.Board;
 
 public class King extends AbstractPiece {
 	
@@ -22,7 +22,7 @@ public class King extends AbstractPiece {
 	}
 
 	@Override
-	public boolean isMoveAllowed(Point beg, Point end, Piece[][] b) {
+	public boolean isMoveAllowed(Point beg, Point end, Board b) {
 		// TODO Auto-generated method stub
 		return false;
 	}

@@ -9,16 +9,18 @@ import view.Board;
 public class Game {
 	Point beg;
 	Point end;
-	Player player1 = new Player("White");
-	Player player2 = new Player("Black");
+	Player player1;// = new Player("White");
+	Player player2;// = new Player("Black");
 	boolean gamended = false;
 	Board b;
 	
 	
 	public Game() {
-		b = new Board(player1, player2);
-		
-		//System.out.println(parseInput());
+		b = new Board();
+		player1 = new Player("White", b);
+		player2 = new Player("Black", b);
+		player1.addPieces();
+		player2.addPieces();
 		b.update();
 		game();
 	}
@@ -61,7 +63,7 @@ public class Game {
 	public void game() {
 		while (!gamended){
 			parseInput();
-			if(!Board.ps[beg.x][beg.y].isMoveAllowed(beg, end, Board.ps)){
+			if(!b.ps[beg.x][beg.y].isMoveAllowed(beg, end, b)){
 				//System.out.println("hello");
 				b.update();
 			}
