@@ -13,7 +13,7 @@ public class Game {
 	public Game() {
 		new Board(player1, player2);
 		
-		//System.out.println(parseInput());
+		System.out.println(parseInput());
 		game();
 	}
 	public static void main(String[] sa) {
