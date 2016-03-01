@@ -1,6 +1,9 @@
 package pieces;
 
+import java.awt.Point;
+
 import model.AbstractPiece;
+import model.Piece;
 
 public class Queen extends AbstractPiece {
 
@@ -14,15 +17,15 @@ public class Queen extends AbstractPiece {
 	}
 
 	@Override
-	public boolean isMoveAllowed() {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
 	public void move() {
 		// TODO Auto-generated method stub
 
+	}
+
+	@Override
+	public boolean isMoveAllowed(Point beg, Point end, Piece[][] b) {
+		// TODO Auto-generated method stub
+		return false;
 	}
 
 }

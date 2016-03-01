@@ -1,19 +1,25 @@
 package controller;
 
+import java.awt.Point;
 import java.util.Scanner;
 
 import model.Player;
 import view.Board;
 
 public class Game {
+	Point beg;
+	Point end;
 	Player player1 = new Player("White");
 	Player player2 = new Player("Black");
 	boolean gamended = false;
+	Board b;
+	
 	
 	public Game() {
-		new Board(player1, player2);
+		b = new Board(player1, player2);
 		
-		System.out.println(parseInput());
+		//System.out.println(parseInput());
+		b.update();
 		game();
 	}
 	public static void main(String[] sa) {
@@ -44,15 +50,24 @@ public class Game {
 			y = input.charAt(2);
 			input = Integer.toString(Character.getNumericValue(x)-10) + input.charAt(1)
 				   +Integer.toString(Character.getNumericValue(y)-10) + input.charAt(3);
+			beg = new Point(8-Character.getNumericValue(input.charAt(1)), Character.getNumericValue(x)-10);
+			end = new Point(8-Character.getNumericValue(input.charAt(3)), Character.getNumericValue(y)-10);
+			//System.out.println("beg x " + beg.x + " beg y "+beg.y + "end x " + end.x + " end y " + end.y);
 		}
+		
 		return input;
 	}
 	
 	public void game() {
 		while (!gamended){
-			System.out.println(parseInput());
+			parseInput();
+			if(!Board.ps[beg.x][beg.y].isMoveAllowed(beg, end, Board.ps)){
+				//System.out.println("hello");
+				b.update();
+			}
 			player1.turn = !player1.turn;
 			player2.turn = !player2.turn;
+			
 		}
 	}
 }

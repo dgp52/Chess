@@ -9,6 +9,10 @@ public class Board {
 	public Board(Player p1, Player p2) {
 		p1.addPieces();
 		p2.addPieces();
+		
+	}
+	
+	public void update() {
 		for(int i = 0; i< ps.length; i++){
 			for(int j= 0; j<ps.length; j++){
 				if(ps[i][j] == null){
@@ -26,5 +30,6 @@ public class Board {
 		}
 		System.out.print(" a  b  c  d  e  f  g  h");
 		System.out.println("\n");
+		counter =8;
 	}
 }

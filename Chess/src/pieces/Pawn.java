@@ -1,9 +1,13 @@
 package pieces;
 
+import java.awt.Point;
+
 import model.AbstractPiece;
+import model.Piece;
+import view.Board;
 
 public class Pawn extends AbstractPiece {
-
+	boolean firstmove = true;
 	/**
 	 * @param piecename
 	 * @param color
@@ -14,16 +18,20 @@ public class Pawn extends AbstractPiece {
 	}
 
 	@Override
-	public boolean isMoveAllowed() {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
 	public void move() {
 		// TODO Auto-generated method stub
 		//isMoveAllowed();
 		
+	}
+
+	@Override
+	public boolean isMoveAllowed(Point beg, Point end, Piece[][] b) {
+		if(firstmove){
+			Board.ps[end.x][end.y] = Board.ps[beg.x][beg.y];
+			Board.ps[beg.x][beg.y]= null;
+		}
+		// TODO Auto-generated method stub
+		return false;
 	}
 
 }
