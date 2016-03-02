@@ -32,9 +32,9 @@ public class Player {
 			b.ps[0][6] = new Knight(name.charAt(0)+"K", name);
 			b.ps[0][7] = new Rook(name.charAt(0)+"R", name);
 			
-//			for(int i =0; i < b.ps[1].length; i++){
-	//			b.ps[1][i] = new Pawn(name.charAt(0)+"p", name);
-		//	}	
+			for(int i =0; i < b.ps[1].length; i++){
+				b.ps[1][i] = new Pawn(name.charAt(0)+"p", name);
+			}	
 		}else {
 			b.ps[7][0] = new Rook(name.charAt(0)+"R", name);
 			b.ps[7][1] = new Knight(name.charAt(0)+"K", name);

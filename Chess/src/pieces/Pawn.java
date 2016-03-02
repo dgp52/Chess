@@ -89,9 +89,81 @@ public class Pawn extends AbstractPiece {
 			}
 			
 		} else {
-			//Its blacks turn:
+			//Its black pawn:
+			if(firstmove){
+				if(end.getX()<=3 && end.getX()>1 && beg.getY()==end.getY()){
+					firstmove = false;
+					return true;
+				} else {
+					System.out.println("Illegal move, try again");
+					firstmove = true;
+					return false;
+				}
+			} else {
+				//System.out.println("Check all the following conditions for White");
+				//Check if moving straight
+				if (beg.getY()==end.getY()) {
+					System.out.println("Its moving straight");
+					if(end.getX()==beg.getX()+1 && b.ps[end.x][end.y]==null){
+						return true;
+					} else {
+						System.out.println("Illegal move, try again");
+						return false;
+					}
+					
+					//Not moving straight
+				} else {
+					System.out.println("Not moving straight");
+					//Check if moving on null object
+					if(b.ps[end.x][end.y]==null){
+						System.out.println("Diagonal but null, try again");
+						return false;
+					} else {
+						//check if its diagonal and not something else:
+						//Check if left of right
+						if(end.getY()<beg.getY()) {
+							//Left Side
+							if(end.getY()==beg.getY()-1 && end.getX()==beg.getX()+1){
+								System.out.println("Left is good");
+								return true;
+							} else {
+								System.out.println("Left is no good");
+								return false;
+							}
+						} else {
+							//Right side
+							if(end.getY()==beg.getY()+1 && end.getX()==beg.getX()+1){
+								System.out.println("Right is good");
+								return true;
+							} else {
+								System.out.println("Right is no good");
+								return false;
+							}
+						}
+					}
+				}
+			}
 		}
-		return false;
+		
+		//return false;
 	}
-
+	
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
