@@ -55,6 +55,9 @@ public class Game {
 			beg = new Point(8-Character.getNumericValue(input.charAt(1)), Character.getNumericValue(x)-10);
 			end = new Point(8-Character.getNumericValue(input.charAt(3)), Character.getNumericValue(y)-10);
 			//System.out.println("beg x " + beg.x + " beg y "+beg.y + "end x " + end.x + " end y " + end.y);
+			if(b.ps[beg.x][beg.y]==null){
+				return "Illegal move, try again";
+			}
 		}
 		
 		return input;
@@ -62,12 +65,15 @@ public class Game {
 	
 	public void game() {
 		while (!gamended){
-			System.out.println(parseInput());
+			if(!parseInput().equalsIgnoreCase("Illegal move, try again")){
 			if(b.ps[beg.x][beg.y].isMoveAllowed(beg, end, b)){
 				//System.out.println("hello");
 				b.ps[end.x][end.y] = b.ps[beg.x][beg.y];
 				b.ps[beg.x][beg.y] = null;
 				b.update();
+				}
+			} else {
+				System.out.println("Illegal move, try again");
 			}
 			player1.turn = !player1.turn;
 			player2.turn = !player2.turn;
