@@ -1,10 +1,9 @@
 package view;
 
-import model.Piece;
-import model.Player;
+import model.AbstractPiece;
 
 public class Board {
-	public  Piece[][] ps = new Piece[8][8]; 
+	public  AbstractPiece[][] ps = new AbstractPiece [8][8]; 
 	int counter = 8;
 //	public Board(Player p1, Player p2) {
 		

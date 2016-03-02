@@ -26,11 +26,11 @@ public class Pawn extends AbstractPiece {
 	@Override
 	public boolean isMoveAllowed(Point beg, Point end, Board b) {
 		if(firstmove){
-			b.ps[end.x][end.y] = b.ps[beg.x][beg.y];
-			b.ps[beg.x][beg.y]= null;
+	//		b.ps[end.x][end.y] = b.ps[beg.x][beg.y];
+		//	b.ps[beg.x][beg.y]= null;
 		}
 		// TODO Auto-generated method stub
-		return false;
+		return true;
 	}
 
 }

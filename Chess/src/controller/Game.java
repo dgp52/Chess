@@ -63,8 +63,10 @@ public class Game {
 	public void game() {
 		while (!gamended){
 			parseInput();
-			if(!b.ps[beg.x][beg.y].isMoveAllowed(beg, end, b)){
+			if(b.ps[beg.x][beg.y].isMoveAllowed(beg, end, b)){
 				//System.out.println("hello");
+				b.ps[end.x][end.y] = b.ps[beg.x][beg.y];
+				b.ps[beg.x][beg.y] = null;
 				b.update();
 			}
 			player1.turn = !player1.turn;

@@ -25,7 +25,33 @@ public class Rook extends AbstractPiece {
 	@Override
 	public boolean isMoveAllowed(Point beg, Point end, Board b) {
 		// TODO Auto-generated method stub
+		if(beg.x != end.x && beg.y != end.y)
+			return false;
+		if(beg.x == end.x && beg.y == end.y)
+			return false;
+		String c = b.ps[beg.x][beg.y].getColor();
+		if(beg.x == end.x){
+			for(int i = beg.y; i <= end.y; i++){
+				if(b.ps[beg.x][i] != null){
+					if(!(b.ps[beg.x][i].getColor().equals(c)) && i == end.y) {
+						return true;
+					}else {
+						//return false;
+					}
+				}
+			}
+			return true;
+		} else {
+			for(int i = beg.x; i <= end.x; i++){
+				if(b.ps[i][beg.y] != null){
+					if(!(b.ps[i][beg.y].getColor().equals(c)) && i == end.x) {
+						return true;
+					}else {
+						return true;
+					}
+				}
+			}
+		}
 		return false;
 	}
-
 }
