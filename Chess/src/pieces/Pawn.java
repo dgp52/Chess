@@ -25,12 +25,44 @@ public class Pawn extends AbstractPiece {
 
 	@Override
 	public boolean isMoveAllowed(Point beg, Point end, Board b) {
-		if(firstmove){
-	//		b.ps[end.x][end.y] = b.ps[beg.x][beg.y];
-		//	b.ps[beg.x][beg.y]= null;
+		//System.out.println("Beginning Point getx: " + beg.getX());
+		//System.out.println("Beginning Point gety: " + beg.getY());
+		//System.out.println("Ending Point getx: " + end.getX());
+		//System.out.println("Ending Point gety: " + end.getY());
+
+		boolean tf = false;
+		if(super.getColor().equalsIgnoreCase("white")){
+			//Check if its the first time
+			if(firstmove){
+				if(end.getX()>=4 && end.getX()<6 && beg.getY()==end.getY()){
+					firstmove = false;
+					return true;
+				} else {
+					System.out.println("Illegal move, try again");
+					firstmove = true;
+					return false;
+				}
+			} else {
+				//System.out.println("Check all the following conditions for White");
+				//Check if moving straight
+				if (beg.getY()==end.getY()) {
+					System.out.println("Its moving straight");
+					if(end.getX()==beg.getX()-1){
+						return true;
+					} else {
+						System.out.println("Illegal move, try again");
+						return false;
+					}
+					
+				} else {
+					System.out.println("Not moving straight");
+				}
+			}
+			
+		} else {
+			//Its blacks turn:
 		}
-		// TODO Auto-generated method stub
-		return true;
+		return tf;
 	}
 
 }
