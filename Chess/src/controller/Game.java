@@ -71,13 +71,12 @@ public class Game {
 				b.ps[end.x][end.y] = b.ps[beg.x][beg.y];
 				b.ps[beg.x][beg.y] = null;
 				b.update();
+				player1.turn = !player1.turn;
+				player2.turn = !player2.turn;
 				}
 			} else {
 				System.out.println("Illegal move, try again");
 			}
-			player1.turn = !player1.turn;
-			player2.turn = !player2.turn;
-			
 		}
 	}
 }

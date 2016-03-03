@@ -144,26 +144,7 @@ public class Pawn extends AbstractPiece {
 				}
 			}
 		}
-		
 		//return false;
 	}
 	
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
