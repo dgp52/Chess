@@ -34,6 +34,26 @@ public class Pawn extends AbstractPiece {
 			//Check if its the first time
 			if(firstmove){
 				if(end.getX()>=4 && end.getX()<6 && beg.getY()==end.getY()){
+					double d = beg.getX()-end.getX();
+					if(d==2.0 && b.ps[beg.x-1][beg.y]==null && b.ps[beg.x-2][beg.y]==null){
+						firstmove = false;
+						return true;
+					}else {
+						if(d==1.0 && b.ps[beg.x-1][beg.y]==null){
+							firstmove = false;
+							return true;
+						} else {
+							firstmove = true;
+							System.out.println("Try again");
+							return false;
+						}
+					}
+				} else if(end.getX()>=4 && end.getX()<6 && end.getY()==beg.getY()-1 && end.getX()==beg.getX()-1){
+					System.out.println("First time Left is good");
+					firstmove = false;
+					return true;
+				} else if (end.getX()>=4 && end.getX()<6 && end.getY()==beg.getY()+1 && end.getX()==beg.getX()-1) {
+					System.out.println("First time right is good");
 					firstmove = false;
 					return true;
 				} else {
@@ -92,6 +112,26 @@ public class Pawn extends AbstractPiece {
 			//Its black pawn:
 			if(firstmove){
 				if(end.getX()<=3 && end.getX()>1 && beg.getY()==end.getY()){
+					double dd = end.getX()-beg.getX();
+					if(dd==2.0 && b.ps[beg.x+1][beg.y]==null && b.ps[beg.x+2][beg.y]==null){
+						firstmove = false;
+						return true;
+					}else {
+						if(dd==1.0 && b.ps[beg.x+1][beg.y]==null){
+							firstmove = false;
+							return true;
+						} else {
+							firstmove = true;
+							System.out.println("Try again");
+							return false;
+						}
+					}
+				} else if(end.getX()<=3 && end.getX()>1 && end.getY()==beg.getY()-1 && end.getX()==beg.getX()+1){
+					System.out.println("First time Left is good");
+					firstmove = false;
+					return true;
+				} else if (end.getX()<=3 && end.getX()>1 && end.getY()==beg.getY()+1 && end.getX()==beg.getX()+1) {
+					System.out.println("First time right is good");
 					firstmove = false;
 					return true;
 				} else {
