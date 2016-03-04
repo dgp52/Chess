@@ -24,53 +24,45 @@ public class Rook extends AbstractPiece {
 
 	@Override
 	public boolean isMoveAllowed(Point beg, Point end, Board b) {
-		
-		if(b.ps[beg.x][beg.y] == null){
-			System.out.println("illegal move, try again");
+
+		// if(b.ps[beg.x][beg.y] == null){
+		// System.out.println("illegal move, try again");
+		// return false;
+		// }
+
+		if (beg.x != end.x && beg.y != end.y) 
 			return false;
-		}
-		
-		if(beg.x != end.x && beg.y != end.y){
-			System.out.println("illegal move, try again");
+
+		if (beg.x == end.x && beg.y == end.y) 
 			return false;
-		}
-			
-		if(beg.x == end.x && beg.y == end.y){
-			System.out.println("illegal move, try again");
-			return false;
-		}
-		
+
 		String c = b.ps[beg.x][beg.y].getColor();
-		if(beg.x == end.x){
-			if(beg.y < end.y){
-				for(int i = beg.y+1; i <= end.y; i++){
-					if(b.ps[beg.x][i] != null){
-						if(!(b.ps[beg.x][i].getColor().equalsIgnoreCase(c))) {
-							if(i == end.y){
+		if (beg.x == end.x) {
+			if (beg.y < end.y) {
+				for (int i = beg.y + 1; i <= end.y; i++) {
+					if (b.ps[beg.x][i] != null) {
+						if (!(b.ps[beg.x][i].getColor().equalsIgnoreCase(c))) {
+							if (i == end.y) {
 								return true;
-							}else {
-								System.out.println("illegal move, try again");
+							} else {
 								return false;
 							}
-						}else {
-							System.out.println("illegal move, try again");
+						} else {
 							return false;
 						}
 					}
 				}
 				return true;
 			} else {
-				for(int i = beg.y-1; i >= end.y; i--){
-					if(b.ps[beg.x][i] != null){
-						if(!(b.ps[beg.x][i].getColor().equalsIgnoreCase(c))) {
-							if(i == end.y){
+				for (int i = beg.y - 1; i >= end.y; i--) {
+					if (b.ps[beg.x][i] != null) {
+						if (!(b.ps[beg.x][i].getColor().equalsIgnoreCase(c))) {
+							if (i == end.y) {
 								return true;
-							}else {
-								System.out.println("illegal move, try again");
+							} else {
 								return false;
 							}
-						}else {
-							System.out.println("illegal move, try again");
+						} else {
 							return false;
 						}
 					}
@@ -78,35 +70,31 @@ public class Rook extends AbstractPiece {
 				return true;
 			}
 		} else {
-			if(beg.x < end.x){
-				for(int i = beg.x+1; i <= end.x; i++){
-					if(b.ps[i][beg.y] != null){
-						if(!(b.ps[i][beg.y].getColor().equalsIgnoreCase(c))) {
-							if(i == end.x){
+			if (beg.x < end.x) {
+				for (int i = beg.x + 1; i <= end.x; i++) {
+					if (b.ps[i][beg.y] != null) {
+						if (!(b.ps[i][beg.y].getColor().equalsIgnoreCase(c))) {
+							if (i == end.x) {
 								return true;
-							}else {
-								System.out.println("illegal move, try again");
+							} else {
 								return false;
 							}
-						}else {
-							System.out.println("illegal move, try again");
+						} else {
 							return false;
 						}
 					}
 				}
 				return true;
 			} else {
-				for(int i = beg.x-1; i >= end.x; i--){
-					if(b.ps[i][beg.y] != null){
-						if(!(b.ps[i][beg.y].getColor().equalsIgnoreCase(c))) {
-							if(i == end.x){
+				for (int i = beg.x - 1; i >= end.x; i--) {
+					if (b.ps[i][beg.y] != null) {
+						if (!(b.ps[i][beg.y].getColor().equalsIgnoreCase(c))) {
+							if (i == end.x) {
 								return true;
-							}else {
-								System.out.println("illegal move, try again");
+							} else {
 								return false;
 							}
 						} else {
-							System.out.println("illegal move, try again");
 							return false;
 						}
 					}

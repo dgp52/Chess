@@ -7,6 +7,7 @@ import view.Board;
 
 public class Pawn extends AbstractPiece {
 	boolean firstmove = true;
+
 	/**
 	 * @param piecename
 	 * @param color
@@ -19,27 +20,27 @@ public class Pawn extends AbstractPiece {
 	@Override
 	public void move() {
 		// TODO Auto-generated method stub
-		//isMoveAllowed();
-		
+		// isMoveAllowed();
+
 	}
 
 	@Override
 	public boolean isMoveAllowed(Point beg, Point end, Board b) {
-		//System.out.println("Beginning Point getx: " + beg.getX());
-		//System.out.println("Beginning Point gety: " + beg.getY());
-		//System.out.println("Ending Point getx: " + end.getX());
-		//System.out.println("Ending Point gety: " + end.getY());
+		// System.out.println("Beginning Point getx: " + beg.getX());
+		// System.out.println("Beginning Point gety: " + beg.getY());
+		// System.out.println("Ending Point getx: " + end.getX());
+		// System.out.println("Ending Point gety: " + end.getY());
 
-		if(super.getColor().equalsIgnoreCase("white")){
-			//Check if its the first time
-			if(firstmove){
-				if(end.getX()>=4 && end.getX()<6 && beg.getY()==end.getY()){
-					double d = beg.getX()-end.getX();
-					if(d==2.0 && b.ps[beg.x-1][beg.y]==null && b.ps[beg.x-2][beg.y]==null){
+		if (super.getColor().equalsIgnoreCase("white")) {
+			// Check if its the first time
+			if (firstmove) {
+				if (end.getX() >= 4 && end.getX() < 6 && beg.getY() == end.getY()) {
+					double d = beg.getX() - end.getX();
+					if (d == 2.0 && b.ps[beg.x - 1][beg.y] == null && b.ps[beg.x - 2][beg.y] == null) {
 						firstmove = false;
 						return true;
-					}else {
-						if(d==1.0 && b.ps[beg.x-1][beg.y]==null){
+					} else {
+						if (d == 1.0 && b.ps[beg.x - 1][beg.y] == null) {
 							firstmove = false;
 							return true;
 						} else {
@@ -48,46 +49,48 @@ public class Pawn extends AbstractPiece {
 							return false;
 						}
 					}
-				} else if(end.getX()>=4 && end.getX()<6 && end.getY()==beg.getY()-1 && end.getX()==beg.getX()-1 
-								&& b.ps[end.x][end.y] != null && !(b.ps[end.x][end.y].getColor().equalsIgnoreCase("white"))){
+				} else if (end.getX() >= 4 && end.getX() < 6 && end.getY() == beg.getY() - 1
+						&& end.getX() == beg.getX() - 1 && b.ps[end.x][end.y] != null
+						&& !(b.ps[end.x][end.y].getColor().equalsIgnoreCase("white"))) {
 					System.out.println("First time Left is good");
 					firstmove = false;
 					return true;
-				} else if (end.getX()>=4 && end.getX()<6 && end.getY()==beg.getY()+1 && end.getX()==beg.getX()-1
-								&& b.ps[end.x][end.y] != null && !(b.ps[end.x][end.y].getColor().equalsIgnoreCase("white"))) {
+				} else if (end.getX() >= 4 && end.getX() < 6 && end.getY() == beg.getY() + 1
+						&& end.getX() == beg.getX() - 1 && b.ps[end.x][end.y] != null
+						&& !(b.ps[end.x][end.y].getColor().equalsIgnoreCase("white"))) {
 					System.out.println("First time right is good");
 					firstmove = false;
 					return true;
 				} else {
-					System.out.println("Illegal move, try again");
 					firstmove = true;
 					return false;
 				}
 			} else {
-				//System.out.println("Check all the following conditions for White");
-				//Check if moving straight
-				if (beg.getY()==end.getY()) {
+				// System.out.println("Check all the following conditions for
+				// White");
+				// Check if moving straight
+				if (beg.getY() == end.getY()) {
 					System.out.println("Its moving straight");
-					if(end.getX()==beg.getX()-1 && b.ps[end.x][end.y]==null){
+					if (end.getX() == beg.getX() - 1 && b.ps[end.x][end.y] == null) {
 						return true;
 					} else {
-						System.out.println("Illegal move, try again");
 						return false;
 					}
-					
-					//Not moving straight
+
+					// Not moving straight
 				} else {
 					System.out.println("Not moving straight");
-					//Check if moving on null object
-					if(b.ps[end.x][end.y]==null){
+					// Check if moving on null object
+					if (b.ps[end.x][end.y] == null) {
 						System.out.println("Diagonal but null, try again");
 						return false;
 					} else {
-						//check if its diagonal and not something else:
-						//Check if left of right
-						if(end.getY()<beg.getY()) {
-							//Left Side
-							if(end.getY()==beg.getY()-1 && end.getX()==beg.getX()-1 && !(b.ps[end.x][end.y].getColor().equalsIgnoreCase("white"))){
+						// check if its diagonal and not something else:
+						// Check if left of right
+						if (end.getY() < beg.getY()) {
+							// Left Side
+							if (end.getY() == beg.getY() - 1 && end.getX() == beg.getX() - 1
+									&& !(b.ps[end.x][end.y].getColor().equalsIgnoreCase("white"))) {
 								System.out.println("Left is good");
 								return true;
 							} else {
@@ -95,8 +98,9 @@ public class Pawn extends AbstractPiece {
 								return false;
 							}
 						} else {
-							//Right side
-							if(end.getY()==beg.getY()+1 && end.getX()==beg.getX()-1 && !(b.ps[end.x][end.y].getColor().equalsIgnoreCase("white"))){
+							// Right side
+							if (end.getY() == beg.getY() + 1 && end.getX() == beg.getX() - 1
+									&& !(b.ps[end.x][end.y].getColor().equalsIgnoreCase("white"))) {
 								System.out.println("Right is good");
 								return true;
 							} else {
@@ -104,22 +108,22 @@ public class Pawn extends AbstractPiece {
 								return false;
 							}
 						}
-						
-						//System.out.println("Theres something there.");
+
+						// System.out.println("Theres something there.");
 					}
 				}
 			}
-			
+
 		} else {
-			//Its black pawn:
-			if(firstmove){
-				if(end.getX()<=3 && end.getX()>1 && beg.getY()==end.getY()){
-					double dd = end.getX()-beg.getX();
-					if(dd==2.0 && b.ps[beg.x+1][beg.y]==null && b.ps[beg.x+2][beg.y]==null){
+			// Its black pawn:
+			if (firstmove) {
+				if (end.getX() <= 3 && end.getX() > 1 && beg.getY() == end.getY()) {
+					double dd = end.getX() - beg.getX();
+					if (dd == 2.0 && b.ps[beg.x + 1][beg.y] == null && b.ps[beg.x + 2][beg.y] == null) {
 						firstmove = false;
 						return true;
-					}else {
-						if(dd==1.0 && b.ps[beg.x+1][beg.y]==null){
+					} else {
+						if (dd == 1.0 && b.ps[beg.x + 1][beg.y] == null) {
 							firstmove = false;
 							return true;
 						} else {
@@ -128,46 +132,48 @@ public class Pawn extends AbstractPiece {
 							return false;
 						}
 					}
-				} else if(end.getX()<=3 && end.getX()>1 && end.getY()==beg.getY()-1 && end.getX()==beg.getX()+1
-						&& b.ps[end.x][end.y] != null && !(b.ps[end.x][end.y].getColor().equalsIgnoreCase("black"))){
+				} else if (end.getX() <= 3 && end.getX() > 1 && end.getY() == beg.getY() - 1
+						&& end.getX() == beg.getX() + 1 && b.ps[end.x][end.y] != null
+						&& !(b.ps[end.x][end.y].getColor().equalsIgnoreCase("black"))) {
 					System.out.println("First time Left is good");
 					firstmove = false;
 					return true;
-				} else if (end.getX()<=3 && end.getX()>1 && end.getY()==beg.getY()+1 && end.getX()==beg.getX()+1
-						&& b.ps[end.x][end.y] != null && !(b.ps[end.x][end.y].getColor().equalsIgnoreCase("black"))) {
+				} else if (end.getX() <= 3 && end.getX() > 1 && end.getY() == beg.getY() + 1
+						&& end.getX() == beg.getX() + 1 && b.ps[end.x][end.y] != null
+						&& !(b.ps[end.x][end.y].getColor().equalsIgnoreCase("black"))) {
 					System.out.println("First time right is good");
 					firstmove = false;
 					return true;
 				} else {
-					System.out.println("Illegal move, try again");
 					firstmove = true;
 					return false;
 				}
 			} else {
-				//System.out.println("Check all the following conditions for White");
-				//Check if moving straight
-				if (beg.getY()==end.getY()) {
+				// System.out.println("Check all the following conditions for
+				// White");
+				// Check if moving straight
+				if (beg.getY() == end.getY()) {
 					System.out.println("Its moving straight");
-					if(end.getX()==beg.getX()+1 && b.ps[end.x][end.y]==null){
+					if (end.getX() == beg.getX() + 1 && b.ps[end.x][end.y] == null) {
 						return true;
 					} else {
-						System.out.println("Illegal move, try again");
 						return false;
 					}
-					
-					//Not moving straight
+
+					// Not moving straight
 				} else {
 					System.out.println("Not moving straight");
-					//Check if moving on null object
-					if(b.ps[end.x][end.y]==null){
+					// Check if moving on null object
+					if (b.ps[end.x][end.y] == null) {
 						System.out.println("Diagonal but null, try again");
 						return false;
 					} else {
-						//check if its diagonal and not something else:
-						//Check if left of right
-						if(end.getY()<beg.getY()) {
-							//Left Side
-							if(end.getY()==beg.getY()-1 && end.getX()==beg.getX()+1 && !(b.ps[end.x][end.y].getColor().equalsIgnoreCase("black"))){
+						// check if its diagonal and not something else:
+						// Check if left of right
+						if (end.getY() < beg.getY()) {
+							// Left Side
+							if (end.getY() == beg.getY() - 1 && end.getX() == beg.getX() + 1
+									&& !(b.ps[end.x][end.y].getColor().equalsIgnoreCase("black"))) {
 								System.out.println("Left is good");
 								return true;
 							} else {
@@ -175,8 +181,9 @@ public class Pawn extends AbstractPiece {
 								return false;
 							}
 						} else {
-							//Right side
-							if(end.getY()==beg.getY()+1 && end.getX()==beg.getX()+1 && !(b.ps[end.x][end.y].getColor().equalsIgnoreCase("black"))){
+							// Right side
+							if (end.getY() == beg.getY() + 1 && end.getX() == beg.getX() + 1
+									&& !(b.ps[end.x][end.y].getColor().equalsIgnoreCase("black"))) {
 								System.out.println("Right is good");
 								return true;
 							} else {
@@ -188,7 +195,7 @@ public class Pawn extends AbstractPiece {
 				}
 			}
 		}
-		//return false;
+		// return false;
 	}
-	
+
 }

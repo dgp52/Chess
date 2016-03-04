@@ -26,9 +26,9 @@ public class Player {
 			b.ps[2][0] = new Rook(name.charAt(0)+"R", name);
 			b.ps[0][1] = new Knight(name.charAt(0)+"K", name);
 			b.ps[0][2] = new Bishop(name.charAt(0)+"B", name);
-			b.ps[0][3] = new Queen(name.charAt(0)+"Q", name);
-			b.ps[0][4] = new King(name.charAt(0)+"K", name);
-			b.ps[0][5] = new Bishop(name.charAt(0)+"B", name);
+			b.ps[2][3] = new Queen(name.charAt(0)+"Q", name);
+			b.ps[2][4] = new King(name.charAt(0)+"K", name);
+			b.ps[2][5] = new Bishop(name.charAt(0)+"B", name);
 			b.ps[0][6] = new Knight(name.charAt(0)+"K", name);
 			b.ps[0][7] = new Rook(name.charAt(0)+"R", name);
 			

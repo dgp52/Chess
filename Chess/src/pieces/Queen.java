@@ -6,6 +6,9 @@ import model.AbstractPiece;
 import view.Board;
 
 public class Queen extends AbstractPiece {
+	
+	private Rook r = new Rook(super.getPiece(), super.getColor());
+	private Bishop bs = new Bishop(super.getPiece(), super.getColor());
 
 	/**
 	 * @param piecename
@@ -24,8 +27,11 @@ public class Queen extends AbstractPiece {
 
 	@Override
 	public boolean isMoveAllowed(Point beg, Point end, Board b) {
-		// TODO Auto-generated method stub
-		return false;
+		if(r.isMoveAllowed(beg, end, b) || bs.isMoveAllowed(beg, end, b)){
+			return true;
+		}else {
+			return false;
+		}
 	}
 
 }
