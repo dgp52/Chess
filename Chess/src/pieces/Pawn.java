@@ -48,11 +48,13 @@ public class Pawn extends AbstractPiece {
 							return false;
 						}
 					}
-				} else if(end.getX()>=4 && end.getX()<6 && end.getY()==beg.getY()-1 && end.getX()==beg.getX()-1){
+				} else if(end.getX()>=4 && end.getX()<6 && end.getY()==beg.getY()-1 && end.getX()==beg.getX()-1 
+								&& b.ps[end.x][end.y] != null && !(b.ps[end.x][end.y].getColor().equalsIgnoreCase("white"))){
 					System.out.println("First time Left is good");
 					firstmove = false;
 					return true;
-				} else if (end.getX()>=4 && end.getX()<6 && end.getY()==beg.getY()+1 && end.getX()==beg.getX()-1) {
+				} else if (end.getX()>=4 && end.getX()<6 && end.getY()==beg.getY()+1 && end.getX()==beg.getX()-1
+								&& b.ps[end.x][end.y] != null && !(b.ps[end.x][end.y].getColor().equalsIgnoreCase("white"))) {
 					System.out.println("First time right is good");
 					firstmove = false;
 					return true;
@@ -85,7 +87,7 @@ public class Pawn extends AbstractPiece {
 						//Check if left of right
 						if(end.getY()<beg.getY()) {
 							//Left Side
-							if(end.getY()==beg.getY()-1 && end.getX()==beg.getX()-1){
+							if(end.getY()==beg.getY()-1 && end.getX()==beg.getX()-1 && !(b.ps[end.x][end.y].getColor().equalsIgnoreCase("white"))){
 								System.out.println("Left is good");
 								return true;
 							} else {
@@ -94,7 +96,7 @@ public class Pawn extends AbstractPiece {
 							}
 						} else {
 							//Right side
-							if(end.getY()==beg.getY()+1 && end.getX()==beg.getX()-1){
+							if(end.getY()==beg.getY()+1 && end.getX()==beg.getX()-1 && !(b.ps[end.x][end.y].getColor().equalsIgnoreCase("white"))){
 								System.out.println("Right is good");
 								return true;
 							} else {
@@ -126,11 +128,13 @@ public class Pawn extends AbstractPiece {
 							return false;
 						}
 					}
-				} else if(end.getX()<=3 && end.getX()>1 && end.getY()==beg.getY()-1 && end.getX()==beg.getX()+1){
+				} else if(end.getX()<=3 && end.getX()>1 && end.getY()==beg.getY()-1 && end.getX()==beg.getX()+1
+						&& b.ps[end.x][end.y] != null && !(b.ps[end.x][end.y].getColor().equalsIgnoreCase("black"))){
 					System.out.println("First time Left is good");
 					firstmove = false;
 					return true;
-				} else if (end.getX()<=3 && end.getX()>1 && end.getY()==beg.getY()+1 && end.getX()==beg.getX()+1) {
+				} else if (end.getX()<=3 && end.getX()>1 && end.getY()==beg.getY()+1 && end.getX()==beg.getX()+1
+						&& b.ps[end.x][end.y] != null && !(b.ps[end.x][end.y].getColor().equalsIgnoreCase("black"))) {
 					System.out.println("First time right is good");
 					firstmove = false;
 					return true;
@@ -163,7 +167,7 @@ public class Pawn extends AbstractPiece {
 						//Check if left of right
 						if(end.getY()<beg.getY()) {
 							//Left Side
-							if(end.getY()==beg.getY()-1 && end.getX()==beg.getX()+1){
+							if(end.getY()==beg.getY()-1 && end.getX()==beg.getX()+1 && !(b.ps[end.x][end.y].getColor().equalsIgnoreCase("black"))){
 								System.out.println("Left is good");
 								return true;
 							} else {
@@ -172,7 +176,7 @@ public class Pawn extends AbstractPiece {
 							}
 						} else {
 							//Right side
-							if(end.getY()==beg.getY()+1 && end.getX()==beg.getX()+1){
+							if(end.getY()==beg.getY()+1 && end.getX()==beg.getX()+1 && !(b.ps[end.x][end.y].getColor().equalsIgnoreCase("black"))){
 								System.out.println("Right is good");
 								return true;
 							} else {
