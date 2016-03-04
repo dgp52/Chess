@@ -7,8 +7,8 @@ import model.Player;
 import view.Board;
 
 public class Game {
-	Point beg;
-	Point end;
+	Point beg = new Point();
+	Point end = new Point();
 	Player player1;// = new Player("White");
 	Player player2;// = new Player("Black");
 	boolean gamended = false;
@@ -42,11 +42,11 @@ public class Game {
 			char x, y;
 			x = input.charAt(0);
 			y = input.charAt(2);
-			beg = new Point(8 - Character.getNumericValue(input.charAt(1)), Character.getNumericValue(x) - 10);
-			end = new Point(8 - Character.getNumericValue(input.charAt(3)), Character.getNumericValue(y) - 10);
-			// System.out.println("beg x " + beg.x + " beg y "+beg.y + " end x "
-			// + end.x + " end y " + end.y + " cdh " +
-			// Character.getNumericValue('b'));
+			beg.setLocation(8 - Character.getNumericValue(input.charAt(1)), Character.getNumericValue(x) - 10);
+			end.setLocation(8 - Character.getNumericValue(input.charAt(3)), Character.getNumericValue(y) - 10);
+//			 System.out.println("beg x " + beg.x + " beg y "+beg.y + " end x "
+//			 + end.x + " end y " + end.y + " cdh " +
+//			 Character.getNumericValue('b'));
 			//s.close();
 			return true;
 		} else {
@@ -67,6 +67,34 @@ public class Game {
 					player2.turn = !player2.turn;
 				}else {
 					System.out.println("illegal move, try again\n");
+				}
+			}
+			checkmate("BK", player1);
+			checkmate("wk",player2);
+		}
+		System.out.println(player1.hasWon ? player1.getName() + " has won " : "");
+		System.out.println(player2.hasWon ? player2.getName() + " has won " : "");
+	}
+	
+	public void checkmate(String k, Player p) {
+		for(int i = 0; i < 8; i++){
+			for(int j = 0; j < 8; j++){
+				if(b.ps[i][j] != null){
+					if(b.ps[i][j].getPiece().equalsIgnoreCase(k))
+						end.setLocation(i, j);
+				}
+			}
+		}
+		for(int i = 0; i < b.ps.length; i++){
+			for(int j = 0; j < b.ps.length; j++){
+				if(b.ps[i][j] != null){
+					if(b.ps[i][j].getColor().equalsIgnoreCase(p.getName())){
+						beg.setLocation(i, j);
+						if(b.ps[i][j].isMoveAllowed(beg, end, b)){
+							gamended = true;
+							p.hasWon = true;
+						}
+					}
 				}
 			}
 		}

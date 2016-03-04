@@ -12,6 +12,7 @@ public class Player {
 	String name;
 	Board b;
 	public boolean turn = false;
+	public boolean hasWon = false;
 	public Player(String name, Board b) {
 		this.name = name;
 		this.b = b;
@@ -23,30 +24,30 @@ public class Player {
 	
 	public void addPieces() {
 		if(name.equals("Black")){
-			b.ps[2][0] = new Rook(name.charAt(0)+"R", name);
-			b.ps[0][1] = new Knight(name.charAt(0)+"K", name);
-			b.ps[0][2] = new Bishop(name.charAt(0)+"B", name);
-			b.ps[2][3] = new Queen(name.charAt(0)+"Q", name);
-			b.ps[2][4] = new King(name.charAt(0)+"K", name);
-			b.ps[2][5] = new Bishop(name.charAt(0)+"B", name);
-			b.ps[0][6] = new Knight(name.charAt(0)+"K", name);
-			b.ps[0][7] = new Rook(name.charAt(0)+"R", name);
+			b.ps[0][0] = new Rook("bR", name);
+			b.ps[0][1] = new Knight("bN", name);
+			b.ps[0][2] = new Bishop("bB", name);
+			b.ps[0][3] = new Queen("bQ", name);
+			b.ps[0][4] = new King("bK", name);
+			b.ps[0][5] = new Bishop("bB", name);
+			b.ps[0][6] = new Knight("bN", name);
+			b.ps[0][7] = new Rook("bR", name);
 			
 			for(int i =0; i < b.ps[1].length; i++){
-				b.ps[1][i] = new Pawn(name.charAt(0)+"p", name);
+				b.ps[1][i] = new Pawn("bp", name);
 			}	
 		}else {
-			b.ps[7][0] = new Rook(name.charAt(0)+"R", name);
-			b.ps[7][1] = new Knight(name.charAt(0)+"K", name);
-			b.ps[7][2] = new Bishop(name.charAt(0)+"B", name);
-			b.ps[7][4] = new Queen(name.charAt(0)+"Q", name);
-			b.ps[7][3] = new King(name.charAt(0)+"K", name);
-			b.ps[7][5] = new Bishop(name.charAt(0)+"B", name);
-			b.ps[7][6] = new Knight(name.charAt(0)+"K", name);
-			b.ps[7][7] = new Rook(name.charAt(0)+"R", name);
+			b.ps[7][0] = new Rook("wR", name);
+			b.ps[7][1] = new Knight("wN", name);
+			b.ps[7][2] = new Bishop("wB", name);
+			b.ps[7][4] = new Queen("wQ", name);
+			b.ps[7][3] = new King("wK", name);
+			b.ps[7][5] = new Bishop("wB", name);
+			b.ps[7][6] = new Knight("wN", name);
+			b.ps[7][7] = new Rook("wR", name);
 			
 			for(int i =0; i < b.ps[6].length; i++){
-				b.ps[6][i] = new Pawn(name.charAt(0)+"p", name);
+				b.ps[6][i] = new Pawn("wp", name);
 			}
 			turn = true;
 		}
