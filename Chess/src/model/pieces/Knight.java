@@ -7,7 +7,7 @@ import view.Board;
 
 public class Knight extends AbstractPiece {
 
-	/**
+	/**has rule for knight
 	 * @param piecename
 	 * @param color
 	 */

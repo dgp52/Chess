@@ -10,7 +10,7 @@ public class Queen extends AbstractPiece {
 	private Rook r = new Rook(super.getPiece(), super.getColor());
 	private Bishop bs = new Bishop(super.getPiece(), super.getColor());
 
-	/**
+	/**has rule for queen
 	 * @param piecename
 	 * @param color
 	 */

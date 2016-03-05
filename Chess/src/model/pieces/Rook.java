@@ -7,7 +7,7 @@ import view.Board;
 
 public class Rook extends AbstractPiece {
 
-	/**
+	/**has rule for rook
 	 * @param piecename
 	 * @param color
 	 */

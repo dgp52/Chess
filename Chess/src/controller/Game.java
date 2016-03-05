@@ -88,7 +88,6 @@ public class Game {
 				if (check(player1)) {
 					System.out.println("bkk");
 					System.out.print("Check\n");
-					System.out.print("hgjkhgkjhg");
 					if (checkmate("bk", player1) && !intervene(player2)) {
 						gamended = true;
 						player1.hasWon = true;

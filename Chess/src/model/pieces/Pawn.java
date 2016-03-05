@@ -9,7 +9,7 @@ public class Pawn extends AbstractPiece {
 	boolean firstmove = true;
 	boolean pawnStartMove = false;
 
-	/**
+	/**has rule for pawn
 	 * @param piecename
 	 * @param color
 	 */
