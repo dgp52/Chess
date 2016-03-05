@@ -47,9 +47,9 @@ public class Game {
 			if (b.ps[beg.x][beg.y] == null)
 				return false;
 			
-			// System.out.println("beg x " + beg.x + " beg y "+beg.y + " end x "
-			// + end.x + " end y " + end.y + " cdh " +
-			// Character.getNumericValue('b'));
+			 System.out.println("beg x " + beg.x + " beg y "+beg.y + " end x "
+			 + end.x + " end y " + end.y + " cdh " +
+			 Character.getNumericValue('b'));
 			// s.close();
 			return true;
 		} else {
@@ -88,6 +88,7 @@ public class Game {
 				if (check(player1)) {
 					System.out.println("bkk");
 					System.out.print("Check\n");
+					System.out.print("hgjkhgkjhg");
 					if (checkmate("bk", player1) && !intervene(player2)) {
 						gamended = true;
 						player1.hasWon = true;
