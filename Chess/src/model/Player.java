@@ -24,14 +24,14 @@ public class Player {
 	
 	public void addPieces() {
 		if(name.equals("Black")){
-			b.ps[0][0] = new Rook("bR", name);
+			b.ps[2][2] = new Rook("bR", name);
 			b.ps[0][1] = new Knight("bN", name);
 			b.ps[0][2] = new Bishop("bB", name);
-			b.ps[0][3] = new Queen("bQ", name);
-			b.ps[0][4] = new King("bK", name);
+			b.ps[3][3] = new Queen("bQ", name);
+			b.ps[2][3] = new King("bK", name);
 			b.ps[0][5] = new Bishop("bB", name);
 			b.ps[0][6] = new Knight("bN", name);
-			b.ps[0][7] = new Rook("bR", name);
+			b.ps[2][4] = new Rook("bR", name);
 			
 			for(int i =0; i < b.ps[1].length; i++){
 				b.ps[1][i] = new Pawn("bp", name);
