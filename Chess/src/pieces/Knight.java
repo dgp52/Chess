@@ -24,19 +24,21 @@ public class Knight extends AbstractPiece {
 
 	@Override
 	public boolean isMoveAllowed(Point beg, Point end, Board b) {
-		if (beg.x == end.getX() || beg.getY() == end.getY()) {
-			System.out.println("Knight moving straight! no no");
+		
+		if (beg.x == end.x || beg.y == end.y) {
+			//System.out.println("Knight moving straight! no no");
 			return false;
-		} else if ((end.getX()+1==beg.getX() || end.getX()-1==beg.getX()) && 
-				(end.getY()-2==beg.getY() ||end.getY()+2==beg.getY())){
-			System.out.println("Knight 1 up +2 -2 left right");
+		} else if ((end.x+1==beg.x || end.x-1==beg.x) && 
+				(end.y-2==beg.y ||end.y+2==beg.y) && (b.ps[end.x][end.y]==null ||
+						!(b.ps[end.x][end.y].getColor().equals(b.ps[beg.x][beg.y].getColor())))){
+			//System.out.println("Knight 1 up +2 -2 left right");
 			return true;
-		} else if ((end.getX()+2==beg.getX() || end.getX()-2==beg.getX()) &&
-				(end.getY()-1==beg.getY() ||end.getY()-1==beg.getY())){
-			System.out.println("Knight 2 up +1 -1 left right");
+		} else if ((end.x+2==beg.x || end.x-2==beg.x) &&
+				(end.y-1==beg.y ||end.y+1==beg.y) && (b.ps[end.x][end.y]==null || 
+				!(b.ps[end.x][end.y].getColor().equals(b.ps[beg.x][beg.y].getColor())))){
+			//System.out.println("Knight 2 up +1 -1 left right");
 			return true;
 		} else {
-			System.out.println("Knight failed");
 			return false;
 		}
 	}
