@@ -36,7 +36,7 @@ public class Player {
 			b.ps[5][0] = new Rook("wR", name);
 			b.ps[7][1] = new Knight("wN", name);
 			b.ps[7][2] = new Bishop("wB", name);
-			b.ps[7][4] = new Queen("wQ", name);
+			b.ps[5][4] = new Queen("wQ", name);
 			b.ps[7][3] = new King("wK", name);
 			b.ps[7][5] = new Bishop("wB", name);
 			b.ps[7][6] = new Knight("wN", name);

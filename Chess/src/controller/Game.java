@@ -37,7 +37,7 @@ public class Game {
 		Scanner s = new Scanner(System.in);
 		String input = s.nextLine();// .trim().replaceAll("\\s","");
 
-		if (input.matches("[a-h][1-8]\\s[a-h][1-8]")) {
+		if (input.matches("[a-h][1-8]\\s[a-h][1-8](\\s[N|R|B|Q])*")) {
 			input = input.trim().replaceAll("\\s", "");
 			char x, y;
 			x = input.charAt(0);
