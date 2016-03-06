@@ -4,6 +4,11 @@ import java.awt.Point;
 import java.util.Scanner;
 
 import model.Player;
+import model.pieces.Bishop;
+import model.pieces.Knight;
+import model.pieces.Pawn;
+import model.pieces.Queen;
+import model.pieces.Rook;
 import view.Board;
 
 public class Game {
@@ -12,6 +17,7 @@ public class Game {
 	Player player1;// = new Player("White");
 	Player player2;// = new Player("Black");
 	boolean gamended = false;
+	boolean pawnPromotion = false;
 	Board b;
 
 	public Game() {
@@ -47,6 +53,132 @@ public class Game {
 			if (b.ps[beg.x][beg.y] == null)
 				return false;
 			
+			if(input.length()==5||input.length()==4){
+				if(b.ps[beg.x][beg.y]instanceof Pawn){
+					Pawn p = (Pawn) b.ps[beg.x][beg.y];
+					if(p.getColor().equalsIgnoreCase("white")
+							&& beg.x==1 
+							&& end.x==0){
+						
+						if(end.x+1==beg.x && end.y==beg.y && b.ps[end.x][end.y]== null && end.x==0 && beg.x==1){
+							if(input.length()==4){
+								pawnPromote('Q',beg,end,b, "White");
+								pawnPromotion = true;
+								return false;
+							} else if (input.length()==5){
+								pawnPromote(input.charAt(4),beg,end,b, "White");
+								pawnPromotion = true;
+								return false;
+							} else {
+								pawnPromotion = false;
+								return true;
+							}
+						} else if (end.x+1==beg.x && end.y+1==beg.y && 
+								!(b.ps[end.x][end.y]==null) &&
+								b.ps[end.x][end.y].getColor().equalsIgnoreCase("Black") && end.x==0 && beg.x==1) {
+							if(input.length()==4){
+								pawnPromote('Q',beg,end,b, "White");
+								pawnPromotion = true;
+								return false;
+							}else if (input.length()==5){
+								pawnPromote(input.charAt(4),beg,end,b, "White");
+								pawnPromotion = true;
+								return false;
+							} else {
+								pawnPromotion = false;
+								return true;
+							}
+						} else if(end.x+1==beg.x && end.y-1==beg.y &&
+								!(b.ps[end.x][end.y]==null) &&
+								b.ps[end.x][end.y].getColor().equalsIgnoreCase("Black") && end.x==0 && beg.x==1){
+							if(input.length()==4){
+								pawnPromote('Q',beg,end,b, "White");
+								pawnPromotion = true;
+								return false;
+							}else if (input.length()==5){
+								pawnPromote(input.charAt(4),beg,end,b, "White");
+								pawnPromotion = true;
+								return false;
+							} else {
+								pawnPromotion = false;
+								return true;
+							}
+							
+						} else {
+							pawnPromotion = false;
+							return true;
+						}
+						
+					} else if(p.getColor().equalsIgnoreCase("Black")
+							&& beg.x==6 
+							&& end.x==7) {
+
+						
+						if(end.x-1==beg.x && end.y==beg.y && b.ps[end.x][end.y]== null && end.x==7 && beg.x==6){
+							if(input.length()==4){
+								pawnPromote('Q',beg,end,b, "Black");
+								pawnPromotion = true;
+								return false;
+							} else if (input.length()==5){
+								pawnPromote(input.charAt(4),beg,end,b, "Black");
+								pawnPromotion = true;
+								return false;
+							} else {
+								pawnPromotion = false;
+								return true;
+							}
+						} else if (end.x-1==beg.x && end.y+1==beg.y && 
+								!(b.ps[end.x][end.y]==null) &&
+								b.ps[end.x][end.y].getColor().equalsIgnoreCase("White") && end.x==7 && beg.x==6) {
+							if(input.length()==4){
+								pawnPromote('Q',beg,end,b, "Black");
+								pawnPromotion = true;
+								return false;
+							}else if (input.length()==5){
+								pawnPromote(input.charAt(4),beg,end,b, "Black");
+								pawnPromotion = true;
+								return false;
+							} else {
+								pawnPromotion = false;
+								return true;
+							}
+						} else if(end.x-1==beg.x && end.y-1==beg.y &&
+								!(b.ps[end.x][end.y]==null) &&
+								b.ps[end.x][end.y].getColor().equalsIgnoreCase("White") && end.x==7 && beg.x==6){
+							if(input.length()==4){
+								pawnPromote('Q',beg,end,b, "Black");
+								pawnPromotion = true;
+								return false;
+							}else if (input.length()==5){
+								pawnPromote(input.charAt(4),beg,end,b, "Black");
+								pawnPromotion = true;
+								return false;
+							} else {
+								pawnPromotion = false;
+								return true;
+							}
+							
+						} else {
+							pawnPromotion = false;
+							return true;
+						}
+						
+					} else {
+						if (input.length()==5){
+							System.out.println("Illegal error");
+							pawnPromotion = false;
+							return false;
+						} else {
+							pawnPromotion = false;
+							return true;
+						}
+					}
+				} else {
+					pawnPromotion = false;
+					return true;
+				}
+			}
+			
 			 System.out.println("beg x " + beg.x + " beg y "+beg.y + " end x "
 			 + end.x + " end y " + end.y + " cdh " +
 			 Character.getNumericValue('b'));
@@ -55,6 +187,32 @@ public class Game {
 		} else {
 			// s.close();
 			return false;
+		}
+	}
+	
+	public void pawnPromote(char c, Point beg, Point end, Board b, String color){
+		char s = color.toLowerCase().charAt(0);
+		switch(c){
+		case 'B':
+			b.ps[end.x][end.y] = new Bishop(s+"B", color);
+			b.ps[beg.x][beg.y] = null;
+			b.update();
+			break;
+		case 'N':
+			b.ps[end.x][end.y] = new Knight(s+"N", color);
+			b.ps[beg.x][beg.y] = null;
+			b.update();
+			break;
+		case 'Q':
+			b.ps[end.x][end.y] = new Queen(s+"Q", color);
+			b.ps[beg.x][beg.y] = null;
+			b.update();
+			break;
+		case 'R':
+			b.ps[end.x][end.y] = new Rook(s+"R", color);
+			b.ps[beg.x][beg.y] = null;
+			b.update();
+			break;
 		}
 	}
 	
@@ -78,6 +236,12 @@ public class Game {
 				} else {
 					System.out.println("illegal move, try again\n");
 				}
+			} else if(pawnPromotion) {
+				player1.turn = !player1.turn;
+				player2.turn = !player2.turn;
+				pawnPromotion = false;
+				
+				System.out.println("Pawn got Promoted");
 			} else {
 				System.out.println("try again \n");
 			}
