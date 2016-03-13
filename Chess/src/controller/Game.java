@@ -46,6 +46,20 @@ public class Game {
 		}
 		Scanner s = new Scanner(System.in);
 		String input = s.nextLine();// .trim().replaceAll("\\s","");
+		
+		if (input.matches("[r][e][s][i][g][n]")) {
+			if(player1.turn){
+				gamended = true;
+				System.out.println(player1.getName() + " resigns");
+				player2.hasWon = true;
+				return false;
+			} else {
+				gamended = true;
+				System.out.println(player2.getName() + " resigns");
+				player1.hasWon = true;
+				return false;
+			}
+		}
 
 		if (input.matches("[a-h][1-8]\\s[a-h][1-8](\\s[N|R|B|Q])*")) {
 			input = input.trim().replaceAll("\\s", "");
@@ -189,7 +203,7 @@ public class Game {
 			return false;
 		}
 	}
-
+	
 	public void pawnPromote(char c, Point beg, Point end, Board b, String color) {
 		char s = color.toLowerCase().charAt(0);
 		switch (c) {
@@ -259,6 +273,8 @@ public class Game {
 				pawnPromotion = false;
 
 				System.out.println("Pawn got Promoted");
+			} else if (gamended) {
+				//System.out.println("Its triggered");
 			} else {
 				System.out.println("try again \n");
 			}
