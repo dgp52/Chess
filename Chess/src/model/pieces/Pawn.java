@@ -9,20 +9,13 @@ public class Pawn extends AbstractPiece {
 	boolean firstmove = true;
 	boolean pawnStartMove = false;
 
-	/**has rule for pawn
+	/**Constructor for Pawn
 	 * @param piecename
 	 * @param color
 	 */
 	public Pawn(String piecename, String color) {
 		super(piecename, color);
 		// TODO Auto-generated constructor stub
-	}
-	
-	@Override
-	public void move() {
-		// TODO Auto-generated method stub
-		// isMoveAllowed();
-
 	}
 	
 	public boolean getPawnStartMove(int endX, int endY, Board b){

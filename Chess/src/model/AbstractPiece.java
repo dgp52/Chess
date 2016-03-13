@@ -10,11 +10,6 @@ public abstract class AbstractPiece implements Piece {
 	private final String color;
 	
 	/**
-	 * needs implementation to move the current piece to specified location
-	 */
-	public abstract void move();
-	
-	/**
 	 * constructor is provided to ease the process for subclasses
 	 * @param piecename
 	 * @param color
@@ -40,9 +35,6 @@ public abstract class AbstractPiece implements Piece {
 		return color;
 	}
 	
-	/* (non-Javadoc)
-	 * @see java.lang.Object#toString()
-	 */
 	@Override
 	public String toString() {
 		return getPiece();

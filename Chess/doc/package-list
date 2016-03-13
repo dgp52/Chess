@@ -1,2 +1,4 @@
+controller
 model
-pieces
+model.pieces
+view

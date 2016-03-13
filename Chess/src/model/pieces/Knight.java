@@ -7,7 +7,7 @@ import view.Board;
 
 public class Knight extends AbstractPiece {
 
-	/**has rule for knight
+	/**Constructor for Knight
 	 * @param piecename
 	 * @param color
 	 */
@@ -16,11 +16,6 @@ public class Knight extends AbstractPiece {
 		// TODO Auto-generated constructor stub
 	}
 
-	@Override
-	public void move() {
-		// TODO Auto-generated method stub
-
-	}
 
 	@Override
 	public boolean isMoveAllowed(Point beg, Point end, Board b) {

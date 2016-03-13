@@ -7,19 +7,13 @@ import view.Board;
 
 public class Bishop extends AbstractPiece {
 
-	/**has rules for bishop
+	/**Constructor for Bishop
 	 * @param piecename
 	 * @param color
 	 */
 	public Bishop(String piecename, String color) {
 		super(piecename, color);
 		// TODO Auto-generated constructor stub
-	}
-
-	@Override
-	public void move() {
-		// TODO Auto-generated method stub
-
 	}
 
 	@Override
@@ -35,6 +29,7 @@ public class Bishop extends AbstractPiece {
 		String c = b.ps[beg.x][beg.y].getColor();
 		if (beg.x > end.x) {
 			if (beg.y < end.y) {
+				//first quadrant
 				for (int i = 1; i <= dif; i++) {
 					if (b.ps[beg.x - i][beg.y + i] != null) {
 						if (!(b.ps[beg.x - i][beg.y + i].getColor().equalsIgnoreCase(c))) {
@@ -50,7 +45,7 @@ public class Bishop extends AbstractPiece {
 				}
 				return true;
 			} else {
-				// begy > endy
+				// second quadrant
 				for (int i = 1; i <= dif; i++) {
 					if (b.ps[beg.x - i][beg.y - i] != null) {
 						if (!(b.ps[beg.x - i][beg.y - i].getColor().equalsIgnoreCase(c))) {
@@ -67,7 +62,7 @@ public class Bishop extends AbstractPiece {
 				return true;
 			}
 		} else {
-			// for beg.x < endx
+			// third quadrant
 			if (beg.y < end.y) {
 				for (int i = 1; i <= dif; i++) {
 					if (b.ps[beg.x + i][beg.y + i] != null) {
@@ -84,7 +79,7 @@ public class Bishop extends AbstractPiece {
 				}
 				return true;
 			} else {
-				// begy > endy
+				// fourth quadrant
 				for (int i = 1; i <= dif; i++) {
 					if (b.ps[beg.x + i][beg.y - i] != null) {
 						if (!(b.ps[beg.x + i][beg.y - i].getColor().equalsIgnoreCase(c))) {

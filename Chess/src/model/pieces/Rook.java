@@ -1,3 +1,7 @@
+/**
+ * @author hassan deep
+ *
+ */
 package model.pieces;
 
 import java.awt.Point;
@@ -7,7 +11,8 @@ import view.Board;
 
 public class Rook extends AbstractPiece {
 
-	/**has rule for rook
+	public boolean hasmoved = false;
+	/**Constructor for Rook
 	 * @param piecename
 	 * @param color
 	 */
@@ -17,18 +22,7 @@ public class Rook extends AbstractPiece {
 	}
 
 	@Override
-	public void move() {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
 	public boolean isMoveAllowed(Point beg, Point end, Board b) {
-
-		// if(b.ps[beg.x][beg.y] == null){
-		// System.out.println("illegal move, try again");
-		// return false;
-		// }
 
 		if (beg.x != end.x && beg.y != end.y) 
 			return false;
@@ -38,11 +32,13 @@ public class Rook extends AbstractPiece {
 
 		String c = b.ps[beg.x][beg.y].getColor();
 		if (beg.x == end.x) {
+			//right side
 			if (beg.y < end.y) {
 				for (int i = beg.y + 1; i <= end.y; i++) {
 					if (b.ps[beg.x][i] != null) {
 						if (!(b.ps[beg.x][i].getColor().equalsIgnoreCase(c))) {
 							if (i == end.y) {
+								hasmoved = true;
 								return true;
 							} else {
 								return false;
@@ -52,12 +48,15 @@ public class Rook extends AbstractPiece {
 						}
 					}
 				}
+				hasmoved = true;
 				return true;
 			} else {
+				//left side
 				for (int i = beg.y - 1; i >= end.y; i--) {
 					if (b.ps[beg.x][i] != null) {
 						if (!(b.ps[beg.x][i].getColor().equalsIgnoreCase(c))) {
 							if (i == end.y) {
+								hasmoved = true;
 								return true;
 							} else {
 								return false;
@@ -67,14 +66,17 @@ public class Rook extends AbstractPiece {
 						}
 					}
 				}
+				hasmoved = true;
 				return true;
 			}
 		} else {
+			//downward with respect to black piece
 			if (beg.x < end.x) {
 				for (int i = beg.x + 1; i <= end.x; i++) {
 					if (b.ps[i][beg.y] != null) {
 						if (!(b.ps[i][beg.y].getColor().equalsIgnoreCase(c))) {
 							if (i == end.x) {
+								hasmoved = true;
 								return true;
 							} else {
 								return false;
@@ -84,12 +86,15 @@ public class Rook extends AbstractPiece {
 						}
 					}
 				}
+				hasmoved = true;
 				return true;
 			} else {
+				//upward with respect to black piece
 				for (int i = beg.x - 1; i >= end.x; i--) {
 					if (b.ps[i][beg.y] != null) {
 						if (!(b.ps[i][beg.y].getColor().equalsIgnoreCase(c))) {
 							if (i == end.x) {
+								hasmoved = true;
 								return true;
 							} else {
 								return false;
@@ -99,6 +104,7 @@ public class Rook extends AbstractPiece {
 						}
 					}
 				}
+				hasmoved = true;
 				return true;
 			}
 		}

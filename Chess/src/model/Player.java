@@ -8,16 +8,27 @@ import model.pieces.Queen;
 import model.pieces.Rook;
 import view.Board;
 
+/**
+ * @author hassan and deep
+ *
+ */
 public class Player {
 	String name;
 	Board b;
 	public boolean turn = false;
 	public boolean hasWon = false;
+	/** constructer for plater
+	 * @param name
+	 * @param b
+	 */
 	public Player(String name, Board b) {
 		this.name = name;
 		this.b = b;
 	}
 	
+	/**
+	 * sets up pieces for the player
+	 */
 	public void addPieces() {
 		if(name.equals("Black")){
 			b.ps[0][0] = new Rook("bR", name);
@@ -36,8 +47,8 @@ public class Player {
 			b.ps[7][0] = new Rook("wR", name);
 			b.ps[7][1] = new Knight("wN", name);
 			b.ps[7][2] = new Bishop("wB", name);
-			b.ps[7][4] = new Queen("wQ", name);
-			b.ps[7][3] = new King("wK", name);
+			b.ps[7][3] = new Queen("wQ", name);
+			b.ps[7][4] = new King("wK", name);
 			b.ps[7][5] = new Bishop("wB", name);
 			b.ps[7][6] = new Knight("wN", name);
 			b.ps[7][7] = new Rook("wR", name);
@@ -49,6 +60,9 @@ public class Player {
 		}
 	}
 	
+	/** returns player name
+	 * @return String
+	 */
 	public String getName() {
 		return this.name;
 	}
