@@ -15,6 +15,7 @@ import view.Board;
 public class Player {
 	String name;
 	Board b;
+	public boolean draw = false;
 	public boolean turn = false;
 	public boolean hasWon = false;
 	/** constructer for plater

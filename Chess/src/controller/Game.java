@@ -19,6 +19,7 @@ public class Game {
 	Player player2;// = new Player("Black");
 	boolean gamended = false;
 	boolean pawnPromotion = false;
+	boolean gameDraw = false;
 	Board b;
 
 	public Game() {
@@ -60,9 +61,36 @@ public class Game {
 				return false;
 			}
 		}
+		
+		if (input.matches("[d][r][a][w]")){
+			if(player1.turn && player2.draw){
+				//System.out.println("Player1 Draw");
+				gameDraw = true;
+				return false;
+			} else if (player2.turn && player1.draw) {
+				//System.out.println("Player2 Draw");
+				gameDraw = true;
+				return false;
+			} else {
+				return false;
+			}
+		}
 
-		if (input.matches("[a-h][1-8]\\s[a-h][1-8](\\s[N|R|B|Q])*")) {
+		if (input.matches("[a-h][1-8]\\s[a-h][1-8](\\s[d][r][a][w][?])*(\\s[N|R|B|Q])*")) {
 			input = input.trim().replaceAll("\\s", "");
+			
+			if (input.length() == 9 && input.charAt(8)=='?' && !player1.draw && !player2.draw) {
+				if(player1.turn){
+					player1.draw = true;
+					//System.out.println("White draw is true");
+				} else {
+					player2.draw = true;
+					//System.out.println("Black draw is true");
+				}
+			} else if ((player1.draw || player2.draw) && input.length() == 9 && input.charAt(8)=='?') {
+				return false;
+			} 
+			
 			char x, y;
 			x = input.charAt(0);
 			y = input.charAt(2);
@@ -275,6 +303,9 @@ public class Game {
 				System.out.println("Pawn got Promoted");
 			} else if (gamended) {
 				//System.out.println("Its triggered");
+			} else if (gameDraw) {
+				gamended = true;
+				//System.out.println("Game Draw!!!!!!");
 			} else {
 				System.out.println("try again \n");
 			}
@@ -298,8 +329,13 @@ public class Game {
 				}
 			}
 		}
-		System.out.println(player1.hasWon ? player1.getName() + " has won " : "");
-		System.out.println(player2.hasWon ? player2.getName() + " has won " : "");
+		
+		if(gamended && gameDraw) {
+			System.out.println("Game Draw!");
+		} else {
+			System.out.println(player1.hasWon ? player1.getName() + " has won " : "");
+			System.out.println(player2.hasWon ? player2.getName() + " has won " : "");	
+		}
 	}
 
 	/** for a player checks for any piece that can be move to specific location
