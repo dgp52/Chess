@@ -5,11 +5,9 @@ import model.AbstractPiece;
 public class Board {
 	public  AbstractPiece[][] ps = new AbstractPiece [8][8]; 
 	int counter = 8;
-//	public Board(Player p1, Player p2) {
-		
-	//}
-	
+
 	public void update() {
+		System.out.println("");
 		for(int i = 0; i< ps.length; i++){
 			for(int j= 0; j<ps.length; j++){
 				if(ps[i][j] == null){

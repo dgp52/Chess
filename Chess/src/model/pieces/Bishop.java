@@ -29,7 +29,6 @@ public class Bishop extends AbstractPiece {
 		String c = b.ps[beg.x][beg.y].getColor();
 		if (beg.x > end.x) {
 			if (beg.y < end.y) {
-				//first quadrant
 				for (int i = 1; i <= dif; i++) {
 					if (b.ps[beg.x - i][beg.y + i] != null) {
 						if (!(b.ps[beg.x - i][beg.y + i].getColor().equalsIgnoreCase(c))) {
@@ -45,7 +44,6 @@ public class Bishop extends AbstractPiece {
 				}
 				return true;
 			} else {
-				// second quadrant
 				for (int i = 1; i <= dif; i++) {
 					if (b.ps[beg.x - i][beg.y - i] != null) {
 						if (!(b.ps[beg.x - i][beg.y - i].getColor().equalsIgnoreCase(c))) {
@@ -62,7 +60,6 @@ public class Bishop extends AbstractPiece {
 				return true;
 			}
 		} else {
-			// third quadrant
 			if (beg.y < end.y) {
 				for (int i = 1; i <= dif; i++) {
 					if (b.ps[beg.x + i][beg.y + i] != null) {
@@ -79,7 +76,6 @@ public class Bishop extends AbstractPiece {
 				}
 				return true;
 			} else {
-				// fourth quadrant
 				for (int i = 1; i <= dif; i++) {
 					if (b.ps[beg.x + i][beg.y - i] != null) {
 						if (!(b.ps[beg.x + i][beg.y - i].getColor().equalsIgnoreCase(c))) {

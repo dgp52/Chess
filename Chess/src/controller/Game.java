@@ -15,8 +15,8 @@ import view.Board;
 public class Game {
 	Point beg = new Point();
 	Point end = new Point();
-	Player player1;// = new Player("White");
-	Player player2;// = new Player("Black");
+	Player player1;
+	Player player2;
 	boolean gamended = false;
 	boolean pawnPromotion = false;
 	boolean gameDraw = false;
@@ -46,7 +46,7 @@ public class Game {
 			System.out.print(player2.getName() + "'s move: ");
 		}
 		Scanner s = new Scanner(System.in);
-		String input = s.nextLine();// .trim().replaceAll("\\s","");
+		String input = s.nextLine();
 		
 		if (input.matches("[r][e][s][i][g][n]")) {
 			if(player1.turn){
@@ -64,11 +64,9 @@ public class Game {
 		
 		if (input.matches("[d][r][a][w]")){
 			if(player1.turn && player2.draw){
-				//System.out.println("Player1 Draw");
 				gameDraw = true;
 				return false;
 			} else if (player2.turn && player1.draw) {
-				//System.out.println("Player2 Draw");
 				gameDraw = true;
 				return false;
 			} else {
@@ -82,10 +80,8 @@ public class Game {
 			if (input.length() == 9 && input.charAt(8)=='?' && !player1.draw && !player2.draw) {
 				if(player1.turn){
 					player1.draw = true;
-					//System.out.println("White draw is true");
 				} else {
 					player2.draw = true;
-					//System.out.println("Black draw is true");
 				}
 			} else if ((player1.draw || player2.draw) && input.length() == 9 && input.charAt(8)=='?') {
 				return false;
@@ -208,7 +204,6 @@ public class Game {
 
 					} else {
 						if (input.length() == 5) {
-							System.out.println("Illegal error");
 							pawnPromotion = false;
 							return false;
 						} else {
@@ -221,17 +216,15 @@ public class Game {
 					return true;
 				}
 			}
-
-			System.out.println("beg x " + beg.x + " beg y " + beg.y + " end x " + end.x + " end y " + end.y + " cdh "
-					+ Character.getNumericValue('b'));
-			// s.close();
 			return true;
 		} else {
-			// s.close();
 			return false;
 		}
 	}
 	
+	/**promotes the pawn
+	 *
+	 */
 	public void pawnPromote(char c, Point beg, Point end, Board b, String color) {
 		char s = color.toLowerCase().charAt(0);
 		switch (c) {
@@ -276,8 +269,6 @@ public class Game {
 					player1.turn = !player1.turn;
 					player2.turn = !player2.turn;
 					b.update();
-
-					//System.out.println("whaaat " + b.ps[7][7]);
 				}
 				if (player2.turn && castle(player1)) {
 					player1.turn = !player1.turn;
@@ -286,7 +277,6 @@ public class Game {
 
 				} else if (b.ps[beg.x][beg.y] != null && b.ps[beg.x][beg.y].isMoveAllowed(beg, end, b)
 						&& (turn(player1) || turn(player2))) {
-					// System.out.println("hello");
 					b.ps[end.x][end.y] = b.ps[beg.x][beg.y];
 					b.ps[beg.x][beg.y] = null;
 					b.update();
@@ -299,20 +289,15 @@ public class Game {
 				player1.turn = !player1.turn;
 				player2.turn = !player2.turn;
 				pawnPromotion = false;
-
-				System.out.println("Pawn got Promoted");
 			} else if (gamended) {
-				//System.out.println("Its triggered");
 			} else if (gameDraw) {
 				gamended = true;
-				//System.out.println("Game Draw!!!!!!");
 			} else {
-				System.out.println("try again \n");
+				System.out.println("illegal move, try again\n");
 			}
 
 			getKing("bk");
 			if (check(player1)) {
-				System.out.println("bkk");
 				System.out.print("Check\n");
 				if (checkmate("bk", player1) && !intervene(player2)) {
 					gamended = true;
@@ -392,7 +377,6 @@ public class Game {
 		getKing(k);
 
 		int x = end.x - 1;
-		System.out.println("end in chemat " + end.x + " y " + end.y);
 		int y = end.y - 1;
 		int x3 = x + 3;
 		int y3 = y + 3;
@@ -400,62 +384,40 @@ public class Game {
 		int y2 = y + 2;
 		int y1 = y + 1;
 		int x1 = x + 1;
-		Point dummy = new Point(end.x, end.y); // king coordinates
+		Point dummy = new Point(end.x, end.y); 
 		if (x >= 0) {
 			if (x3 < 8) {
 				if (y >= 0) {
 					if (y3 < 8) {
-						System.out.println("in x3 " + x3 + " y3 " + y3);
 						return helper(x, y, x3, y3, dummy, b, p);
 					} else if (y2 < 8) {
-						System.out.println("in x3y2");
 						return helper(x, y, x3, y2, dummy, b, p);
 					} else {
-						System.out.println("in x3y1");
 						return helper(x, y, x3, y1, dummy, b, p);
 					}
 				}
 			} else if (x2 < 8) {
 				if (y >= 0) {
 					if (y3 < 8) {
-						// System.out.println("in x2y3 x " + x +" y "+y + " x2 "
-						// +x2+" y3 " + y3 );
 						return helper(x, y, x2, y3, dummy, b, p);
 					} else if (y2 < 8) {
-						System.out.println("in x2y2");
 						return helper(x, y, x2, y2, dummy, b, p);
 					} else {
-						System.out.println("in x2y1");
 						return helper(x, y, x2, y1, dummy, b, p);
 					}
 				}
 			} else if (x1 < 8) {
 				if (y >= 0) {
 					if (y3 < 8) {
-						System.out.println("in x1y3 x " + x + " y " + y + " x1 " + x1 + " y3 " + y3);
 						return helper(x, y, x1, y3, dummy, b, p);
 					} else if (y2 < 8) {
-						System.out.println("in x1y2");
 						return helper(x, y, x1, y2, dummy, b, p);
 					} else {
-						System.out.println("in x1y1");
 						return helper(x, y, x1, y1, dummy, b, p);
 					}
 				}
 			}
 		} else {
-			// if (y >= 0) {
-			// if (y3 < 8) {
-			// System.out.println("in xy3");
-			// return helper(x,y,dummy.x,y3,dummy,b,p);
-			// } else if (y2 < 8) {
-			// System.out.println("in xy2");
-			// return helper(x,y,dummy.x,y2,dummy,b,p);
-			// } else {
-			// System.out.println("in xy1");
-			// return helper(x,y,dummy.x,y1,dummy,b,p);
-			// }
-			// }
 		}
 		return false;
 	}
@@ -475,7 +437,6 @@ public class Game {
 			for (int j = y; j < yy; j++) {
 				end.setLocation(i, j);
 				if (b.ps[dummy.x][dummy.y].isMoveAllowed(dummy, end, b)) {
-					System.out.println("pass nullity" + "end x end y " + end.x + " " + end.y);
 					if (!check(p)) {
 						return false;
 					}
@@ -509,12 +470,9 @@ public class Game {
 
 			if (king.castle && !king.hasmoved) {
 				if (king.getColor().equalsIgnoreCase("white")) {
-					// check right side
 					if ((beg.y < end.y && b.ps[7][7] instanceof Rook)) {
-						System.out.println("in castlingrook  ");
 						Rook rook = (Rook) b.ps[7][7];
 						if (!rook.hasmoved) {
-							System.out.println("in castlingrook not  ");
 							for (int i = beg.y + 1; i <= end.y; i++) {
 								end.setLocation(beg.x, i);
 								if (check(p)) {
@@ -533,7 +491,6 @@ public class Game {
 						}
 
 					} else {
-						//lest side
 						if (beg.y > end.y && b.ps[7][0] instanceof Rook) {
 							Rook rook = (Rook) b.ps[7][0];
 							if (!rook.hasmoved) {
@@ -551,17 +508,13 @@ public class Game {
 								return true;
 							} else {
 								return false;
-								// System.out.println("move not allowed");
 							}
 						}
 					}
 				} else {
-					// right side
 					if ((beg.y < end.y && b.ps[0][7] instanceof Rook)) {
-						System.out.println("in castlingrook  ");
 						Rook rook = (Rook) b.ps[0][7];
 						if (!rook.hasmoved) {
-							System.out.println("in castlingrook not  ");
 							for (int i = beg.y + 1; i <= end.y; i++) {
 								end.setLocation(beg.x, i);
 								if (check(p)) {
@@ -580,7 +533,6 @@ public class Game {
 						}
 
 					} else {
-						// left side
 						if (beg.y > end.y && b.ps[0][0] instanceof Rook) {
 							Rook rook = (Rook) b.ps[0][0];
 							if (!rook.hasmoved) {

@@ -32,7 +32,6 @@ public class Rook extends AbstractPiece {
 
 		String c = b.ps[beg.x][beg.y].getColor();
 		if (beg.x == end.x) {
-			//right side
 			if (beg.y < end.y) {
 				for (int i = beg.y + 1; i <= end.y; i++) {
 					if (b.ps[beg.x][i] != null) {
@@ -51,7 +50,6 @@ public class Rook extends AbstractPiece {
 				hasmoved = true;
 				return true;
 			} else {
-				//left side
 				for (int i = beg.y - 1; i >= end.y; i--) {
 					if (b.ps[beg.x][i] != null) {
 						if (!(b.ps[beg.x][i].getColor().equalsIgnoreCase(c))) {
@@ -70,7 +68,6 @@ public class Rook extends AbstractPiece {
 				return true;
 			}
 		} else {
-			//downward with respect to black piece
 			if (beg.x < end.x) {
 				for (int i = beg.x + 1; i <= end.x; i++) {
 					if (b.ps[i][beg.y] != null) {
@@ -89,7 +86,6 @@ public class Rook extends AbstractPiece {
 				hasmoved = true;
 				return true;
 			} else {
-				//upward with respect to black piece
 				for (int i = beg.x - 1; i >= end.x; i--) {
 					if (b.ps[i][beg.y] != null) {
 						if (!(b.ps[i][beg.y].getColor().equalsIgnoreCase(c))) {

@@ -35,7 +35,6 @@ public class King extends AbstractPiece {
 		if (beg.x == end.x && y == 2 && !hasmoved) {
 			if (b.ps[beg.x][beg.y].getColor().equalsIgnoreCase("wite")) {
 				if (beg.y < end.y) {
-					//right side
 					if (b.ps[beg.x][beg.y + 1] == null && b.ps[beg.x][beg.y + 2] == null) {
 						if (b.ps[7][7] != null && b.ps[7][7] instanceof Rook) {
 							Rook k = (Rook) b.ps[7][7];
@@ -48,7 +47,6 @@ public class King extends AbstractPiece {
 						}
 					}
 				} else {
-					//left side
 					if (b.ps[beg.x][beg.y - 1] == null && b.ps[beg.x][beg.y - 2] == null) {
 						if (b.ps[7][0] != null && b.ps[7][0] instanceof Rook) {
 							Rook k = (Rook) b.ps[7][0];
@@ -62,7 +60,6 @@ public class King extends AbstractPiece {
 					}
 				}
 			} else {
-				//right side for blace piece
 				if (beg.y < end.y) {
 					if (b.ps[beg.x][beg.y + 1] == null && b.ps[beg.x][beg.y + 2] == null) {
 						if (b.ps[0][7] != null && b.ps[0][7] instanceof Rook) {
@@ -76,7 +73,6 @@ public class King extends AbstractPiece {
 						}
 					}
 				} else {
-					//left side
 					if (b.ps[beg.x][beg.y - 1] == null && b.ps[beg.x][beg.y - 2] == null) {
 						if (b.ps[0][0] != null && b.ps[0][0] instanceof Rook) {
 							Rook k = (Rook) b.ps[0][0];
