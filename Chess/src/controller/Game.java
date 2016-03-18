@@ -1,3 +1,8 @@
+/**Chess Game
+ * @author hassan and deep
+ *
+ */
+
 package controller;
 
 import java.awt.Point;
@@ -21,7 +26,11 @@ public class Game {
 	boolean pawnPromotion = false;
 	boolean gameDraw = false;
 	Board b;
+	//AbstractPiece pi;
 
+	/**
+	 * sets up the board and players
+	 */
 	public Game() {
 		b = new Board();
 		player1 = new Player("White", b);
@@ -32,6 +41,9 @@ public class Game {
 		play();
 	}
 
+	/** main 
+	 * @param sa
+	 */
 	public static void main(String[] sa) {
 		new Game();
 	}
@@ -251,6 +263,10 @@ public class Game {
 		}
 	}
 
+	/** check who's turn it is
+	 * @param p
+	 * @return
+	 */
 	public boolean turn(Player p) {
 		if (p.turn) {
 			if (b.ps[beg.x][beg.y].getColor().equalsIgnoreCase(p.getName()))
@@ -269,8 +285,7 @@ public class Game {
 					player1.turn = !player1.turn;
 					player2.turn = !player2.turn;
 					b.update();
-				}
-				if (player2.turn && castle(player1)) {
+				}else if (player2.turn && castle(player1)) {
 					player1.turn = !player1.turn;
 					player2.turn = !player2.turn;
 					b.update();
@@ -298,7 +313,7 @@ public class Game {
 
 			getKing("bk");
 			if (check(player1)) {
-				System.out.print("Check\n");
+				System.out.println("Check\n");
 				if (checkmate("bk", player1) && !intervene(player2)) {
 					gamended = true;
 					player1.hasWon = true;
@@ -307,7 +322,7 @@ public class Game {
 
 			getKing("wk");
 			if (check(player2)) {
-				System.out.print("Check\n" + "in pl2");
+				System.out.println("Check\n");
 				if (checkmate("wk", player2) && !intervene(player1)) {
 					gamended = true;
 					player2.hasWon = true;
@@ -316,7 +331,7 @@ public class Game {
 		}
 		
 		if(gamended && gameDraw) {
-			System.out.println("Game Draw!");
+			System.out.println("Game Drawn!");
 		} else {
 			System.out.println(player1.hasWon ? player1.getName() + " has won " : "");
 			System.out.println(player2.hasWon ? player2.getName() + " has won " : "");	
@@ -334,8 +349,6 @@ public class Game {
 					if (b.ps[i][j].getColor().equalsIgnoreCase(p.getName())) {
 						beg.setLocation(i, j);
 						if (b.ps[i][j].isMoveAllowed(beg, end, b)) {
-							System.out.println("check ");
-							System.out.println(b.ps[i][j]);
 							return true;
 						}
 					}
@@ -357,8 +370,6 @@ public class Game {
 					if (b.ps[i][j].getColor().equalsIgnoreCase(p.getName())) {
 						d.setLocation(i, j);
 						if (b.ps[i][j].isMoveAllowed(d, beg, b)) {
-							System.out.println("check ");
-							System.out.println(b.ps[i][j]);
 							return true;
 						}
 					}
@@ -417,7 +428,6 @@ public class Game {
 					}
 				}
 			}
-		} else {
 		}
 		return false;
 	}
@@ -467,9 +477,18 @@ public class Game {
 	public boolean castle(Player p) {
 		if (b.ps[beg.x][beg.y] instanceof King && b.ps[beg.x][beg.y].isMoveAllowed(beg, end, b)) {
 			King king = (King) b.ps[beg.x][beg.y];
-
+			
+			
 			if (king.castle && !king.hasmoved) {
+				int x = beg.x;
+				int y = beg.y;
+				if (check(p)) {
+					System.out.println("move nsfdsot allowed");
+					return false;
+				}
+				beg.setLocation(x, y);
 				if (king.getColor().equalsIgnoreCase("white")) {
+					
 					if ((beg.y < end.y && b.ps[7][7] instanceof Rook)) {
 						Rook rook = (Rook) b.ps[7][7];
 						if (!rook.hasmoved) {

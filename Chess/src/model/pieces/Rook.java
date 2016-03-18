@@ -1,7 +1,8 @@
-/**
- * @author hassan deep
+/**Chess Game
+ * @author hassan and deep
  *
  */
+
 package model.pieces;
 
 import java.awt.Point;
@@ -18,7 +19,6 @@ public class Rook extends AbstractPiece {
 	 */
 	public Rook(String piecename, String color) {
 		super(piecename, color);
-		// TODO Auto-generated constructor stub
 	}
 
 	@Override
@@ -33,6 +33,7 @@ public class Rook extends AbstractPiece {
 		String c = b.ps[beg.x][beg.y].getColor();
 		if (beg.x == end.x) {
 			if (beg.y < end.y) {
+				//left side
 				for (int i = beg.y + 1; i <= end.y; i++) {
 					if (b.ps[beg.x][i] != null) {
 						if (!(b.ps[beg.x][i].getColor().equalsIgnoreCase(c))) {
@@ -50,6 +51,7 @@ public class Rook extends AbstractPiece {
 				hasmoved = true;
 				return true;
 			} else {
+				//right side
 				for (int i = beg.y - 1; i >= end.y; i--) {
 					if (b.ps[beg.x][i] != null) {
 						if (!(b.ps[beg.x][i].getColor().equalsIgnoreCase(c))) {
@@ -69,6 +71,7 @@ public class Rook extends AbstractPiece {
 			}
 		} else {
 			if (beg.x < end.x) {
+				//upward with respect to white
 				for (int i = beg.x + 1; i <= end.x; i++) {
 					if (b.ps[i][beg.y] != null) {
 						if (!(b.ps[i][beg.y].getColor().equalsIgnoreCase(c))) {
@@ -86,6 +89,7 @@ public class Rook extends AbstractPiece {
 				hasmoved = true;
 				return true;
 			} else {
+				//downward with respect to white
 				for (int i = beg.x - 1; i >= end.x; i--) {
 					if (b.ps[i][beg.y] != null) {
 						if (!(b.ps[i][beg.y].getColor().equalsIgnoreCase(c))) {

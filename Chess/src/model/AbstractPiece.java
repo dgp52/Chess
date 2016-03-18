@@ -1,10 +1,10 @@
-package model;
-
-/**
- * Chess Game
+/**Chess Game
  * @author hassan and deep
  *
  */
+
+package model;
+
 public abstract class AbstractPiece implements Piece {
 	private final String piecename;
 	private final String color;

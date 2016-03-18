@@ -1,3 +1,8 @@
+/**Chess Game
+ * @author hassan and deep
+ *
+ */
+
 package model.pieces;
 
 import java.awt.Point;
@@ -84,12 +89,12 @@ public class Pawn extends AbstractPiece {
 						return false;
 					}
 				} else {
-					if (b.ps[end.x][end.y] == null) {
+					if (b.ps[end.x][end.y] == null && beg.x == 5 && (end.y+1==beg.y || end.y-1==beg.y)) {
 						if(b.ps[end.x+1][end.y].getColor().equalsIgnoreCase("black") &&
 								getPawnStartMove(end.x+1,end.y,b) && 
 								((end.x+1==beg.x && end.y-1==beg.y) || (end.x+1==beg.x&& end.y+1==beg.y))){
 							b.ps[end.x+1][end.y]=null;
-							System.out.println("En passant");
+							System.out.println("En passant\n");
 							return true;
 						} else {
 							return false;
@@ -157,13 +162,13 @@ public class Pawn extends AbstractPiece {
 						return false;
 					}
 				} else {
-					if (b.ps[end.x][end.y] == null) {
+					if (b.ps[end.x][end.y] == null && beg.x == 4 && (end.y+1==beg.y || end.y-1==beg.y)) {
 						//En Passant
 						if(b.ps[end.x-1][end.y].getColor().equalsIgnoreCase("white") &&
-								getPawnStartMove(end.x-1,end.y,b) && 
+								getPawnStartMove(end.x-1,end.y,b)  &&
 								((end.x-1==beg.x && end.y+1==beg.y) || (end.x-1==beg.x&& end.y-1==beg.y))){
 							b.ps[end.x-1][end.y]=null;
-							System.out.println("En passant");
+							System.out.println("En passant\n");
 							return true;
 						} else {
 							return false;

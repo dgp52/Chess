@@ -1,14 +1,14 @@
-/**
+/**Chess Game
  * @author hassan and deep
  *
  */
+
 package model.pieces;
 
 import java.awt.Point;
 
 import model.AbstractPiece;
 import view.Board;
-
 
 public class King extends AbstractPiece {
 

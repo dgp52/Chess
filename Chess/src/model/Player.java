@@ -1,3 +1,8 @@
+/**Chess Game
+ * @author hassan and deep
+ *
+ */
+
 package model;
 
 import model.pieces.Bishop;
@@ -8,17 +13,14 @@ import model.pieces.Queen;
 import model.pieces.Rook;
 import view.Board;
 
-/**
- * @author hassan and deep
- *
- */
 public class Player {
 	String name;
 	Board b;
 	public boolean draw = false;
 	public boolean turn = false;
 	public boolean hasWon = false;
-	/** constructer for plater
+	
+	/** constructor for player
 	 * @param name
 	 * @param b
 	 */
@@ -32,7 +34,7 @@ public class Player {
 	 */
 	public void addPieces() {
 		if(name.equals("Black")){
-			b.ps[0][0] = new Rook("bR", name);
+		b.ps[0][0] = new Rook("bR", name);
 			b.ps[0][1] = new Knight("bN", name);
 			b.ps[0][2] = new Bishop("bB", name);
 			b.ps[0][3] = new Queen("bQ", name);

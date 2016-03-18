@@ -1,3 +1,8 @@
+/**Chess Game
+ * @author hassan and deep
+ *
+ */
+
 package view;
 
 import model.AbstractPiece;
@@ -6,6 +11,9 @@ public class Board {
 	public  AbstractPiece[][] ps = new AbstractPiece [8][8]; 
 	int counter = 8;
 
+	/**updates the board when called
+	 * 
+	 */
 	public void update() {
 		System.out.println("");
 		for(int i = 0; i< ps.length; i++){

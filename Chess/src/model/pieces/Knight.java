@@ -1,3 +1,8 @@
+/**Chess Game
+ * @author hassan and deep
+ *
+ */
+
 package model.pieces;
 
 import java.awt.Point;
