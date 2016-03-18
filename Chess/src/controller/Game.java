@@ -483,7 +483,6 @@ public class Game {
 				int x = beg.x;
 				int y = beg.y;
 				if (check(p)) {
-					System.out.println("move nsfdsot allowed");
 					return false;
 				}
 				beg.setLocation(x, y);
@@ -495,7 +494,6 @@ public class Game {
 							for (int i = beg.y + 1; i <= end.y; i++) {
 								end.setLocation(beg.x, i);
 								if (check(p)) {
-									System.out.println("move not allowed");
 									return false;
 								}
 							}
@@ -505,7 +503,6 @@ public class Game {
 							b.ps[7][7] = null;
 							return true;
 						} else {
-							System.out.println("move not allowed");
 							return false;
 						}
 
@@ -516,7 +513,6 @@ public class Game {
 								for (int i = beg.y - 1; i <= end.y; i--) {
 									end.setLocation(beg.x, i);
 									if (check(p)) {
-										System.out.println("move not allowed");
 										return false;
 									}
 								}
@@ -537,7 +533,6 @@ public class Game {
 							for (int i = beg.y + 1; i <= end.y; i++) {
 								end.setLocation(beg.x, i);
 								if (check(p)) {
-									System.out.println("move not allowed");
 									return false;
 								}
 							}
@@ -547,7 +542,6 @@ public class Game {
 							b.ps[0][7] = null;
 							return true;
 						} else {
-							System.out.println("move not allowed");
 							return false;
 						}
 
@@ -558,7 +552,6 @@ public class Game {
 								for (int i = beg.y - 1; i <= end.y; i--) {
 									end.setLocation(beg.x, i);
 									if (check(p)) {
-										System.out.println("move not allowed");
 										return false;
 									}
 								}
@@ -568,7 +561,6 @@ public class Game {
 								b.ps[0][0] = null;
 								return true;
 							} else {
-								System.out.println("move not allowed");
 								return false;
 							}
 						}
