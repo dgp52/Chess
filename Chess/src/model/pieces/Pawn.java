@@ -61,7 +61,6 @@ public class Pawn extends AbstractPiece {
 							return true;
 						} else {
 							firstmove = true;
-							System.out.println("Try again");
 							return false;
 						}
 					}
@@ -89,8 +88,10 @@ public class Pawn extends AbstractPiece {
 						return false;
 					}
 				} else {
-					if (b.ps[end.x][end.y] == null && beg.x == 5 && (end.y+1==beg.y || end.y-1==beg.y)) {
-						if(b.ps[end.x+1][end.y].getColor().equalsIgnoreCase("black") &&
+					
+					if (b.ps[end.x][end.y] == null && beg.x == 3 && (end.y+1==beg.y || end.y-1==beg.y)) {
+						if(b.ps[end.x+1][end.y] !=null  &&
+								b.ps[end.x+1][end.y].getColor().equalsIgnoreCase("black") &&
 								getPawnStartMove(end.x+1,end.y,b) && 
 								((end.x+1==beg.x && end.y-1==beg.y) || (end.x+1==beg.x&& end.y+1==beg.y))){
 							b.ps[end.x+1][end.y]=null;
@@ -102,13 +103,15 @@ public class Pawn extends AbstractPiece {
 					} else {
 						if (end.getY() < beg.getY()) {
 							if (end.getY() == beg.getY() - 1 && end.getX() == beg.getX() - 1
+									&& b.ps[end.x][end.y] !=null 
 									&& !(b.ps[end.x][end.y].getColor().equalsIgnoreCase("white"))) {
 								return true;
 							} else {
 								return false;
 							}
 						} else {
-							if (end.getY() == beg.getY() + 1 && end.getX() == beg.getX() - 1
+							if (end.getY() == beg.getY() + 1 && end.getX() == beg.getX() - 1 
+									&& b.ps[end.x][end.y] !=null 
 									&& !(b.ps[end.x][end.y].getColor().equalsIgnoreCase("white"))) {
 								return true;
 							} else {
@@ -134,7 +137,6 @@ public class Pawn extends AbstractPiece {
 							return true;
 						} else {
 							firstmove = true;
-							System.out.println("Try again");
 							return false;
 						}
 					}
@@ -164,7 +166,8 @@ public class Pawn extends AbstractPiece {
 				} else {
 					if (b.ps[end.x][end.y] == null && beg.x == 4 && (end.y+1==beg.y || end.y-1==beg.y)) {
 						//En Passant
-						if(b.ps[end.x-1][end.y].getColor().equalsIgnoreCase("white") &&
+						if(b.ps[end.x-1][end.y] !=null  &&
+								b.ps[end.x-1][end.y].getColor().equalsIgnoreCase("white") &&
 								getPawnStartMove(end.x-1,end.y,b)  &&
 								((end.x-1==beg.x && end.y+1==beg.y) || (end.x-1==beg.x&& end.y-1==beg.y))){
 							b.ps[end.x-1][end.y]=null;
@@ -178,6 +181,7 @@ public class Pawn extends AbstractPiece {
 					} else {
 						if (end.getY() < beg.getY()) {
 							if (end.getY() == beg.getY() - 1 && end.getX() == beg.getX() + 1
+									&& b.ps[end.x][end.y] !=null 
 									&& !(b.ps[end.x][end.y].getColor().equalsIgnoreCase("black")) ) {
 								return true;
 							} else {
@@ -185,6 +189,7 @@ public class Pawn extends AbstractPiece {
 							}
 						} else {
 							if (end.getY() == beg.getY() + 1 && end.getX() == beg.getX() + 1
+									&& b.ps[end.x][end.y] !=null 
 									&& !(b.ps[end.x][end.y].getColor().equalsIgnoreCase("black"))) {
 								return true;
 							} else {

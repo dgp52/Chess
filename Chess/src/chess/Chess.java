@@ -477,15 +477,15 @@ public class Chess {
 	public boolean castle(Player p) {
 		if (b.ps[beg.x][beg.y] instanceof King && b.ps[beg.x][beg.y].isMoveAllowed(beg, end, b)) {
 			King king = (King) b.ps[beg.x][beg.y];
-			
+			int x = beg.x;
+			int y = beg.y;
+			if (check(p)) {
+				return false;
+			}
+			beg.setLocation(x, y);
 			
 			if (king.castle && !king.hasmoved) {
-				int x = beg.x;
-				int y = beg.y;
-				if (check(p)) {
-					return false;
-				}
-				beg.setLocation(x, y);
+				
 				if (king.getColor().equalsIgnoreCase("white")) {
 					
 					if ((beg.y < end.y && b.ps[7][7] instanceof Rook)) {
